@@ -1,0 +1,48 @@
+pipeline {
+    agent any 
+    stages {
+
+        stage('Check-out-git') { 
+            steps {
+           git branch: 'master'
+           url: 'https://github.com/praveenvenkata/performance.git'
+                 
+            }
+        stage('RBS') { 
+            steps {
+              bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\RBSCODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\RBS_PERFORMANCE\RBSHTML 
+            }
+        }
+        stage('NATWEST') { 
+            steps {
+               bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\NatwestCODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\NATWEST_PERFORMANCE\NATWESTHTML
+            }
+        }
+        stage('LOMBARD') { 
+            steps {
+                bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\LombardCODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\LOMBARD_PERFORMANCE\LOMBARDHTML 
+            }
+
+
+        stage('RBS-PREMIER') { 
+            steps {
+                bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\RBSPremhub1.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\RBS_PREMIER_PERFORMANCE\RBS_PREMIER_HTML 
+            }
+
+        stage('NATWEST-PREMIER') { 
+            steps {
+                bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\NatwestPremierCODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\NATWEST_PREMIER_PERFORMANCE\NATWESTPREMIERHTML 
+            }
+stage('UISER-NI') { 
+            steps {
+                bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\UisterNICODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\Uister_NI_PERFORMANCE\Uister_NI_HTML
+            }
+
+stage('UISER-ROI') { 
+            steps {
+                bat C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\jmeter -n -t C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\BusinessHubJmeterScripts\UlsterROICODE.jmx -f -l C:\Users\Venkata.Kunchala\Downloads\apache-jmeter-5.4.1\apache-jmeter-5.4.1\bin\testresults.jtl -e -o C:\Users\Venkata.Kunchala\.jenkins\workspace\Uister_ROI_PERFORMANCE\UISTER_ROI_HTML 
+            
+
+        }
+    }
+}
